@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Header";
 import AbsensesList from "./FullAbsenceList";
 import CalendarList from "./CalendarList";
+import Pickers from "./Pickers"
 import { Box, Container } from "@material-ui/core";
 import queryString from "query-string";
 import axios from "axios";
@@ -9,6 +10,7 @@ import axios from "axios";
 export default class HompePage extends React.Component {
   state = {
     gridList: [],
+    calendarList: [],
     employeesList: [],
     userId: NaN,
     startDate: "",
@@ -54,7 +56,7 @@ export default class HompePage extends React.Component {
             endDate: new Date(elt.endDate).setHours(23),
           });
         });
-        this.setState({ gridList , calendarList});
+        this.setState({ gridList, calendarList });
       });
   };
   fetchMembers = () => {
@@ -73,6 +75,7 @@ export default class HompePage extends React.Component {
     const userId = parseInt(values.userId);
     const { startDate, endDate } = values;
     this.setState({ userId, startDate, endDate });
+    this.fetchMembers();
     this.fetchAbsenses(userId, startDate, endDate);
   }
   render() {
@@ -80,6 +83,7 @@ export default class HompePage extends React.Component {
       <div>
         <Header />
         <Container maxWidth="xl">
+          <Pickers employeesList={this.state.employeesList} />
           <Box p={3}>
             <h2>List Of Absenses</h2>
           </Box>
