@@ -2,7 +2,8 @@ import React from "react";
 import Header from "./Header";
 import AbsensesList from "./FullAbsenceList";
 import CalendarList from "./CalendarList";
-import Pickers from "./Pickers"
+import Pickers from "./Pickers";
+import IcalGenerator from "./IcalGenerator";
 import { Box, Container } from "@material-ui/core";
 import queryString from "query-string";
 import axios from "axios";
@@ -12,6 +13,7 @@ export default class HompePage extends React.Component {
     gridList: [],
     calendarList: [],
     employeesList: [],
+    icalList: [],
     userId: NaN,
     startDate: "",
     endDate: "",
@@ -25,6 +27,7 @@ export default class HompePage extends React.Component {
         const data = res.data;
         let gridList = [];
         let calendarList = [];
+        let icalList = [];
         data.forEach((elt) => {
           gridList.push({
             id: elt.id,
@@ -55,8 +58,22 @@ export default class HompePage extends React.Component {
             startDate: new Date(elt.startDate),
             endDate: new Date(elt.endDate).setHours(23),
           });
+          if (elt.rejectedAt == null) {
+            icalList.push({
+              start: elt.startDate,
+              end: elt.endDate,
+              summary:
+                elt.type === "sickness"
+                  ? `${elt.name} is sick`
+                  : `${elt.name} is on vacation`,
+              description: elt.memberNote,
+              organizer: "Crewmeister <challenge@crewmeister.com>",
+              url: "https://crewmeister.com/",
+              location: "ATOSS Aloud GmbH",
+            });
+          };
         });
-        this.setState({ gridList, calendarList });
+        this.setState({ gridList, calendarList, icalList });
       });
   };
   fetchMembers = () => {
@@ -86,6 +103,7 @@ export default class HompePage extends React.Component {
           <Pickers employeesList={this.state.employeesList} />
           <Box p={3}>
             <h2>List Of Absenses</h2>
+            <IcalGenerator icalList={this.state.icalList} />
           </Box>
           <AbsensesList absensesList={this.state.gridList} />
           <Box p={3}>
