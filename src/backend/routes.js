@@ -3,7 +3,7 @@ import {
   FilterAbsencesList,
   FilterAbsencesListById,
   FilterAbsencesListByDate,
-} from "./filters.js";
+} from "./absenses.js";
 
 const routes = express.Router();
 
