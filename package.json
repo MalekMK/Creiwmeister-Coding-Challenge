@@ -30,6 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "installation": "npm i & (cd ./src/backend && npm i)",
     "dev": "(cd ./src/backend && npm run start) & npm run start",
     "build": "react-scripts build",
     "test": "react-scripts test",
