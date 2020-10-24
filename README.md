@@ -12,18 +12,15 @@ Build with care and love :heart: .
 
 `cd ./Creiwmeister-Coding-Challenge`
 
-## Install npm 
+## Install npm in frontend and backend
 
-`npm i`
+`npm run installation`
 
-## Run the server in the backend
+## Run the server in the backend and frontend
 
-`nodemon ./src/backend/server.js`
+`npm run dev`
 
-## Open antother terminal and go to Creiwmeister-Coding-Challenge folder
-## Start the frontend server
-
-`npm start`
+## Enjoy !!!!
 
 ## Learn More
 
