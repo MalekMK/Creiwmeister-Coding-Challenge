@@ -1,8 +1,8 @@
 import {members, absences} from './api.js';
 let absencesList = await absences(); // creating the list of absenses from JSON file
 let membersList = await members();  // creating the list of members from JSON file
-let fullAbscencesList = absencesList.map(abs => Object.assign(abs, membersList.find(member => member.userId == abs.userId)));
-fullAbscencesList.forEach((elt,index) => elt.id=index)  // merging the properties to get one JSON object
+let fullAbsencesList = absencesList.map(abs => Object.assign(abs, membersList.find(member => member.userId == abs.userId)));
+fullAbsencesList.forEach((elt,index) => elt.id=index)  // merging the properties to get one JSON object
 
 //filtering all the absenses
 export async function FilterAbsencesList() 
