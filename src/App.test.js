@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './App';
+import ErrorPage from './Components/ErrorPage';
+import { BrowserRouter} from "react-router-dom";
+
 
 test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
+  const { getByText } = render(<ErrorPage/>);
+  const linkElement = getByText(/404 - Not Found!/i);
   expect(linkElement).toBeInTheDocument();
 });
