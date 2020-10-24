@@ -14,7 +14,7 @@ export default class CalendarList extends React.PureComponent {
   state = {
     currentDate: "2017-02-01",
   };
-  currentDateChange = (currentDate) => {
+  currentDateChange = (currentDate) => { //handle che date change event
     this.setState({ currentDate });
   };
 

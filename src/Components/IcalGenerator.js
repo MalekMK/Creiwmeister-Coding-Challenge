@@ -6,10 +6,8 @@ import download from "downloadjs"
 export default class IcalGenerator extends React.Component {
   state = {
   };
-  handleClickDownload = (event) => {
-    const icalendar = new ical({
-      domain: "sebbo.net",
-      prodId: "//superman-industries.com//ical-generator//EN",
+  handleClickDownload = (event) => { // filling the ical file with the data displayed grid only
+    const icalendar = new ical({ 
       events: this.props.icalList
     }).toString();
     download(icalendar, "Calendar.ics", "text/plain");

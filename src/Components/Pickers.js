@@ -12,7 +12,7 @@ export default class Pickers extends React.Component {
     endDate: "2017-02-28",
     open: false,
   };
-  handleSearchClick = (event) => {
+  handleSearchClick = () => { // verification of the range of the date
     new Date(this.state.startDate) > new Date(this.state.endDate)
       ? this.setState({ open: true })
       : (window.location.href = `/?startDate=${this.state.startDate}&endDate=${this.state.endDate}`);
@@ -43,7 +43,7 @@ export default class Pickers extends React.Component {
               label="From"
               type="date"
               defaultValue="2017-02-01"
-              onChange={(event, value) =>
+              onChange={(event) =>
                 this.setState({ startDate: event.target.value })
               }
               InputLabelProps={{
@@ -57,7 +57,7 @@ export default class Pickers extends React.Component {
               label="To"
               type="date"
               defaultValue="2017-02-28"
-              onChange={(event, value) =>
+              onChange={(event) =>
                 this.setState({ endDate: event.target.value })
               }
               InputLabelProps={{
@@ -68,7 +68,7 @@ export default class Pickers extends React.Component {
           <Box px={1}>
             <Button
               variant="contained"
-              onClick={(event) => this.handleSearchClick(event)}
+              onClick={() => this.handleSearchClick()}
               color="primary"
             >
               Search
@@ -99,9 +99,7 @@ export default class Pickers extends React.Component {
                 height: "52px",
               }}
               variant="contained"
-              onClick={() => {
-                window.location.href = `/`;
-              }}
+              onClick={() => (window.location.href = `/`)}
               color="secondary"
             >
               Clear All Filters

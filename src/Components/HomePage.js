@@ -29,7 +29,7 @@ export default class HompePage extends React.Component {
         let calendarList = [];
         let icalList = [];
         data.forEach((elt) => {
-          gridList.push({
+          gridList.push({ //filling the table of absenses data
             id: elt.id,
             type: elt.type,
             start: elt.startDate,
@@ -49,7 +49,7 @@ export default class HompePage extends React.Component {
                 : new Date(elt.rejectedAt).toISOString().split("T")[0],
             desc: elt.memberNote,
           });
-          calendarList.push({
+          calendarList.push({ //filling the calendar data
             id: elt.id,
             title:
               elt.type === "sickness"
@@ -58,7 +58,7 @@ export default class HompePage extends React.Component {
             startDate: new Date(elt.startDate),
             endDate: new Date(elt.endDate).setHours(23),
           });
-          if (elt.rejectedAt == null) {
+          if (elt.rejectedAt == null) { // generating the event of ical file to download
             icalList.push({
               start: elt.startDate,
               end: elt.endDate,
@@ -76,7 +76,7 @@ export default class HompePage extends React.Component {
         this.setState({ gridList, calendarList, icalList });
       });
   };
-  fetchMembers = () => {
+  fetchMembers = () => { // fetching the names of employees for the autocomplete to select specific id 
     axios.get(`http://localhost:3001/`).then((res) => {
       const data = res.data;
       let employeesList = [];
@@ -88,12 +88,12 @@ export default class HompePage extends React.Component {
     });
   };
   componentDidMount() {
-    const values = queryString.parse(this.props.location.search);
+    const values = queryString.parse(this.props.location.search); //getting the parameters of url if exist
     const userId = parseInt(values.userId);
     const { startDate, endDate } = values;
     this.setState({ userId, startDate, endDate });
-    this.fetchMembers();
-    this.fetchAbsenses(userId, startDate, endDate);
+    this.fetchMembers(); // calling for filling the state
+    this.fetchAbsenses(userId, startDate, endDate); // calling for filling the state 
   }
   render() {
     return (
