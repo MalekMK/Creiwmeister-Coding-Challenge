@@ -19,7 +19,7 @@ export async function FilterAbsencesListById(Id)
 //filtering the absenses between two dates
 export async function FilterAbsencesListByDate(startDate, endDate)
 {
-    startDate =  new Date(startDate)
-    endDate =  new Date(endDate).setHours(24)
+    startDate =  startDate ? new Date(startDate) : new  Date(0)
+    endDate = endDate ? new Date(endDate).setHours(24) : Date.now()
     return fullAbsencesList.map((elt) => (new Date(elt.startDate) >= startDate && new Date(elt.endDate) <= endDate ) ? elt : null ).filter(val => val !== null);
 }
