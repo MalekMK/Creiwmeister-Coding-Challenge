@@ -1,14 +1,15 @@
 import React from "react";
 import Header from "./Header";
 import AbsensesList from "./FullAbsenceList";
+import CalendarList from "./CalendarList";
 import { Box, Container } from "@material-ui/core";
 import queryString from "query-string";
 import axios from "axios";
 
-
 export default class HompePage extends React.Component {
   state = {
     gridList: [],
+    employeesList: [],
     userId: NaN,
     startDate: "",
     endDate: "",
@@ -21,6 +22,7 @@ export default class HompePage extends React.Component {
       .then((res) => {
         const data = res.data;
         let gridList = [];
+        let calendarList = [];
         data.forEach((elt) => {
           gridList.push({
             id: elt.id,
@@ -42,9 +44,29 @@ export default class HompePage extends React.Component {
                 : new Date(elt.rejectedAt).toISOString().split("T")[0],
             desc: elt.memberNote,
           });
-        })
-        this.setState({ gridList });
+          calendarList.push({
+            id: elt.id,
+            title:
+              elt.type === "sickness"
+                ? `${elt.name} is sick`
+                : `${elt.name} is on vacation`,
+            startDate: new Date(elt.startDate),
+            endDate: new Date(elt.endDate).setHours(23),
+          });
+        });
+        this.setState({ gridList , calendarList});
       });
+  };
+  fetchMembers = () => {
+    axios.get(`http://localhost:3001/`).then((res) => {
+      const data = res.data;
+      let employeesList = [];
+      data.forEach((elt) => {
+        const found = employeesList.some((el) => el.userId === elt.userId);
+        if (!found) employeesList.push({ userId: elt.userId, name: elt.name });
+      });
+      this.setState({ employeesList });
+    });
   };
   componentDidMount() {
     const values = queryString.parse(this.props.location.search);
@@ -62,6 +84,12 @@ export default class HompePage extends React.Component {
             <h2>List Of Absenses</h2>
           </Box>
           <AbsensesList absensesList={this.state.gridList} />
+          <Box p={3}>
+            <h2>Calendar Of Absenses</h2>
+          </Box>
+          <Box py={3}>
+            <CalendarList m={5} absensesList={this.state.calendarList} />
+          </Box>
         </Container>
       </div>
     );
