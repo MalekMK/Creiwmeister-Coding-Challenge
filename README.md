@@ -24,6 +24,10 @@ Build with care and love :heart: .
 
 ## To test the mocked API [localhost:3001](http://localhost:3001/)
 
+## Run the test script
+
+`npm test`
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
