@@ -20,16 +20,19 @@ Build with care and love :heart: .
 
 `npm run dev`
 
-### Visit [localhost:3000](http://localhost:3000/) 
-### Enjoy
+## Visit
 
-### Test the mocked API via [localhost:3001](http://localhost:3001/)
+### [localhost:3000](http://localhost:3000/) 
+
+## Test the mocked API via
+
+### [localhost:3001](http://localhost:3001/)
 
 ## Run the test script
 
 `npm test`
 
-## My cofiguration
+## My configuration
 
 ### OS : Ubuntu 20.04
 ### npm : v6.14.8
