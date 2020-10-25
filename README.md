@@ -12,21 +12,29 @@ Build with care and love :heart: .
 
 `cd ./Creiwmeister-Coding-Challenge`
 
-## Install npm in frontend and backend
+## Install npm
 
 `npm run installation`
 
-## Run the server in the backend and frontend
+## Run the server
 
 `npm run dev`
 
-## Visit [localhost:3000](http://localhost:3000/)
+### Visit [localhost:3000](http://localhost:3000/) 
+### Enjoy
 
-## To test the mocked API [localhost:3001](http://localhost:3001/)
+### Test the mocked API via [localhost:3001](http://localhost:3001/)
 
 ## Run the test script
 
 `npm test`
 
+## My cofiguration
+
+### OS : Ubuntu 20.04
+### npm : v6.14.8
+### nodemon : v2.0.6
+
+
 ## More Information
-### Visit my personal website at : [malek-mkaouar.herokuapp.com](https://malek-mkaouar.herokuapp.com/)
+#### Visit my personal website at : [malek-mkaouar.herokuapp.com](https://malek-mkaouar.herokuapp.com/)
