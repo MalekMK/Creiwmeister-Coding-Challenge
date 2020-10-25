@@ -18,7 +18,7 @@ export default class HompePage extends React.Component {
     startDate: "",
     endDate: "",
     collapseOpen: false,
-    filters :""
+    filters: "",
   };
   fetchAbsenses = (userId, startDate, endDate) => {
     axios
@@ -81,10 +81,16 @@ export default class HompePage extends React.Component {
         });
         if (userId || startDate || endDate) collapseOpen = true;
         let filters = "";
-        if (userId) filters += " UserId = " + userId.toString() + " | "
-        if (startDate) filters += " From = " + startDate
-        if (endDate) filters += " | To = " + endDate
-        this.setState({ gridList, calendarList, icalList, collapseOpen, filters});
+        if (userId) filters += " UserId = " + userId.toString() + " | ";
+        if (startDate) filters += " From = " + startDate;
+        if (endDate) filters += " | To = " + endDate;
+        this.setState({
+          gridList,
+          calendarList,
+          icalList,
+          collapseOpen,
+          filters,
+        });
       });
   };
   fetchMembers = () => {
@@ -119,9 +125,7 @@ export default class HompePage extends React.Component {
           </Box>
           <Box p={2}>
             <Collapse in={this.state.collapseOpen}>
-              <strong>
-                Filters : {this.state.filters}
-              </strong>
+              <strong>Filters : {this.state.filters}</strong>
             </Collapse>
           </Box>
           <AbsensesList absensesList={this.state.gridList} />

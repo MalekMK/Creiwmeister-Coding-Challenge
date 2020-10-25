@@ -1,4 +1,4 @@
 /node_modules
 /src/backend/node_modules
-./package-lock.json
+package-lock.json
 /src/backend/package-lock.json

@@ -9,7 +9,7 @@ const columns = [ // naming the table header columns
   { field: "createdAt", headerName: "Created At", type: "date", width: 150 },
   { field: "confirmedAt", headerName: "Confirmed At", type: "date", width: 150},
   { field: "rejectedAt", headerName: "Rejected At", type: "date", width: 150 },
-  { field: "desc", headerName: "Member Description", type: "string", width: 600},
+  { field: "desc", headerName: "Member Description", type: "string", width: 600}
 ];
 
 export default class AbsensesList extends React.Component {

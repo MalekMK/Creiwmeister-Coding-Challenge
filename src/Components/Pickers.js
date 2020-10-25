@@ -12,7 +12,8 @@ export default class Pickers extends React.Component {
     endDate: "2017-02-28",
     open: false,
   };
-  handleSearchClick = () => { // verification of the range of the date
+  handleSearchClick = () => {
+    // verification of the range of the date
     new Date(this.state.startDate) > new Date(this.state.endDate)
       ? this.setState({ open: true })
       : (window.location.href = `/?startDate=${this.state.startDate}&endDate=${this.state.endDate}`);

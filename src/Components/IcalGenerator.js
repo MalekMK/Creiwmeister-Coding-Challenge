@@ -1,7 +1,7 @@
 import { Box, Button } from "@material-ui/core";
 import React from "react";
 import ical from "ical-generator";
-import download from "downloadjs"
+import download from "downloadjs";
 
 export default class IcalGenerator extends React.Component {
   state = {
