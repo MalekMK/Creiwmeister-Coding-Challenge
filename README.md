@@ -20,7 +20,9 @@ Build with care and love :heart: .
 
 `npm run dev`
 
-## Enjoy !!!!
+## Visit [localhost:3000](http://localhost:3000/)
+
+## To test the mocked API [localhost:3001](http://localhost:3001/)
 
 ## Learn More
 
