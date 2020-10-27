@@ -37,6 +37,7 @@ Build with care and love :heart: .
 ### OS : Ubuntu 20.04
 ### npm : v6.14.8
 ### nodemon : v2.0.6
+### node : v14.14.0
 
 
 ## More Information about me
